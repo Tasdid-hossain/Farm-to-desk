@@ -75,3 +75,10 @@ cache:
   directories:
     - node_modules
 >>>>>>> a0ef2d3770b39b94276427186a08ce76178baafc
+
+language: ruby
+rvm:
+  - 2.2
+  - jruby
+  - 2.0.0-p247
+
