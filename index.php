@@ -24,6 +24,8 @@ if(!isset($_SESSION['username']))
   </head>
   <body>
 
+  <!-- NAVIGATION -->
+  
    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="index.php">Farm To Desk Bangaladesh</a>
@@ -40,6 +42,8 @@ if(!isset($_SESSION['username']))
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                 <a class="dropdown-item" href="fish.php">Fish Markert</a>
                 <a class="dropdown-item" href="rice.php">Rice Markert</a>
+				<a class="dropdown-item" href="vegetable.php">Vegetable Markert</a>
+				<a class="dropdown-item" href="meat.php">Meat Markert</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -47,8 +51,8 @@ if(!isset($_SESSION['username']))
 				Recipe
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Vegetable recipe</a>
-                <a class="dropdown-item" href="blog-post.html">Pie recipe</a>
+                <a class="dropdown-item" href="v_recipe.php">Vegetable recipe</a>
+                <a class="dropdown-item" href="p_recipe.php">Pie recipe</a>
               </div>
             </li>
 			    <a class="nav-link" href="orders.php">My Orders</a>
@@ -59,23 +63,64 @@ if(!isset($_SESSION['username']))
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
-          </ul>
 			<?php
-
-					  if(isset($_SESSION['username'])){
-						echo '<li><a href="account.php">My Account</a></li>';
-						echo '<li><a href="logout.php">Log Out</a></li>';
-					  }
-					  else{
-						echo '<li><a href="login.php">Log In</a></li>';
-						echo '<li><a href="register.php">Register</a></li>';
-					  }
-				?>
+			echo "<li class='nav-item dropdown'>";
+			echo  "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownBlog' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+			if(isset($_SESSION['username'])){
+				if($_SESSION['username'] == "admin@farmtodesk.com"){
+				echo "Admin";}
+				else 
+					echo "My Account";
+				
+			}
+			else{
+				
+				echo "Login";
+			}
+			echo "</a>";
+			?>
+			<?php
+			echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownBlog'>";
+			if(isset($_SESSION['username'])){
+				if($_SESSION['username'] == "admin@farmtodesk.com"){
+					echo "<a class ='dropdown-item' href='account.php'>";
+					echo "Update Quantity";
+					echo "</a>";
+					echo "<a class ='dropdown-item' href='upload.php'>";
+					echo "Upload Product";
+					echo "</a>";
+					echo "<a class ='dropdown-item' href='logout.php'>";
+					echo "Logout";
+					echo "</a>";
+				}
+				else{
+					echo "<a class ='dropdown-item' href='account.php'>";
+					echo "Edit Profile";
+					echo "</a>";
+					echo "<a class ='dropdown-item' href='logout.php'>";
+					echo "Logout";
+					echo "</a>";
+				}
+			}
+			else{
+				echo "<a class ='dropdown-item' href='login.php'>";
+				echo "Sign In";
+				echo "</a>";
+				echo "<a class ='dropdown-item' href='register.php'>";
+				echo "Sign Up";
+				echo "</a>";
+			}
+			
+			echo "</div>";
+			?>
+			
+            </li>
+			
+			</ul>
         </div>
       </div>
     </nav>
-         
-      
+     
    <header>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -87,8 +132,8 @@ if(!isset($_SESSION['username']))
           <!-- Slide One - Set the background image for this slide in the line below -->
           <div class="carousel-item active" style="background-image: url('https://i.ytimg.com/vi/H-BUk99mwKE/maxresdefault.jpg')">
             <div class="carousel-caption d-none d-md-block">
-              <h3><font color="yellow">ভাল খাবার প্রতিদিন</font></h3>
-              <p><font color="yellow">সরাসরি খামার থেকে তাজা সবজি</font></p>
+              <h3><font color="yellow">Good Food Everyday</font></h3>
+              <p><font color="yellow">Directly From Your Local Farm</font></p>
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
@@ -101,8 +146,8 @@ if(!isset($_SESSION['username']))
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <div class="carousel-item" style="background-image: url('http://4.bp.blogspot.com/-vVwts_Gm3E4/Tw60ENzdj0I/AAAAAAAACYA/MVODoc5ASO4/s1600/IMG_7417.jpg')">
             <div class="carousel-caption d-none d-md-block">
-              <h3><font color="yellow">এমন খাবার</font></h3>
-              <p><font color="yellow">ভাল এবং সুস্থ থাকতে তো সকলেই চায়</font></p>
+              <h3><font color="yellow">Food Like This</font></h3>
+              <p><font color="yellow">Stay Healthy, Stay Happy</font></p>
             </div>
           </div>
         </div>
@@ -130,29 +175,29 @@ if(!isset($_SESSION['username']))
               <p class="card-text">We bring farmers produce items directly from farmers to your house</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">বিস্তারিত পড়ুন</a>
+              <a href="aboutus.php" class="btn btn-primary">Read Details</a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 mb-4">
           <div class="card h-100">
-            <h4 class="card-header">কৃষি ও মানুষ</h4>
+            <h4 class="card-header">Farmers and Us</h4>
             <div class="card-body">
-              <p class="card-text"> ঘটছে তার আধুনিকায়ন ও সহজে প্রয়োগের উপযোগিতা নির্ণয়। বাংলাদেশের কৃষকরা প্রাচীনকাল থেকেই কৃষি ও ‍কৃষির সকল উপখাতে প্রয়োগ করে আসছেন নানা প্রযুক্তি ও কৌশল। </p>
+              <p class="card-text"> Lorem ipsum dolor sit amet, conlis vdietd est non, dapibus sollicitudin justo. Donec porta odio nulla, id dapibus mauris porta in. Maecenas nec dolor nec dui aliquet ornare. </p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">বিস্তারিত পড়ুন</a>
+              <a href="Farmers.php" class="btn btn-primary">Read Details</a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 mb-4">
           <div class="card h-100">
-            <h4 class="card-header">সতেজ খাবার</h4>
+            <h4 class="card-header">Fresh Food</h4>
             <div class="card-body">
-              <p class="card-text"> আমাদের সবাইকে প্রতিদিন কোন না কোন খাবারের জন্য দোকানে কিংবা বাজারে যেতে হয়। আর বর্তমানে ভেজাল খাবারের আড়ালে কোনটা তাজা কোনটা ভেজাল সেটা চেনা বড়ই মুশকিল হয়ে দাড়িয়েছে।</p>
+              <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet molestie felis vitae dapibus. Proin vitae ligula sed sapien imperdiet auctor a in</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">বিস্তারিত পড়ুন</a>
+              <a href="Fresh.php" class="btn btn-primary">Read Details</a>
             </div>
           </div>
         </div>
@@ -160,7 +205,7 @@ if(!isset($_SESSION['username']))
       <!-- /.row -->
 
       <!-- Portfolio Section -->
-      <h2>আপনার জন্য কিছু বাজার</h2>
+      <h2>Some Groceries For You</h2>
 
       <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -168,10 +213,10 @@ if(!isset($_SESSION['username']))
             <a href="#"><img class="card-img-top" height="320px" src="https://bizimages.withfloats.com/actual/5a682811cc0e340b741a2f07.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="product.html">বাসমতী চাল</a>
+                <a href="rice.php">Basmati</a>
               </h4>
-              <p class="card-text">বাসমতী চালে কোলেস্টেরল থাকে না। নিয়মিত আপনি যে পরিশোধিত চাল খান তার চেয়ে বাসমতী চাল ও বাদামী চাল স্বাস্থ্যকর। বাসমতী চালে কার্বোহাইড্রেট, সামান্য প্রোটিন,
-			  খুবই সামান্য ফ্যাট, ভিটামিন এবং মিনারেল এবং অবশ্যই প্রচুর ফাইবার থাকে যা স্বাস্থ্যের জন্য উপকারী।</p>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet molestie felis vitae dapibus. Proin vitae ligula sed sapien 
+			  imperdiet auctor a in in enim. Sed massa lacus,</p>
             </div>
           </div>
         </div>
@@ -180,57 +225,58 @@ if(!isset($_SESSION['username']))
             <a href="#"><img class="card-img-top" height="320px" src="https://farm7.staticflickr.com/6210/6053072848_25b5411ca1_b.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">মুসুর ডাল</a>
+                <a href="vegetable.php">Daal</a>
               </h4>
-              <p class="card-text"> সাধারণভাবে মসুর ডাল রান্না করে খাওয়ার পাশাপাশি এটা দিয়ে তৈরি করা হয় নানা রকমের পুষ্টিকর ও মুখরোচক খাবার।
-			  যেমন – ডালের চচ্চড়ি, ডালনা, নিরামিষ, পিঁয়াজু, ডালপুরি, ডালের স্যুপ, আম ডাল, পুঁই ডাল ইত্যাদি।</p>
+              <p class="card-text"> orem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet molestie felis vitae dapibus. Proin vitae ligula sed sapien imperdiet 
+			  auctor a in enim. Sed massa lacus,</p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" height="320px" src="img\sx.png" alt=""></a>
+            <a href="#"><img class="card-img-top" height="320px" src="images\products\bagun.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">বেগুন</a>
+                <a href="vegetable">Brinjal</a>
               </h4>
-              <p class="card-text"> সারা বছর এই সবজি পাওয়া যায়। এমনকি এটি বাড়ির যে কোনো জায়গায় লাগিয়ে ও এর ফল পাওয়া যায়।  পুষ্টিগুণ : প্রতি ১০০গ্রাম বেগুনে আছে প্রোটিন ১.৪গ্রাম, ক্যালসিয়াম ১৮
-			  মিগ্রা, কার্বোহাইড্রেট ৪গ্রাম, ফসফরাস ৪৭ মিগ্রা, রিবোফ্লাবিন ০.১১মিগ্রা, লোহা ০.৯মিগ্রা, ফ্যাট ০.৩ গ্রাম, পটাশিয়াম ২০০মিগ্রা</p>
+              <p class="card-text"> orem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet molestie felis .
+			  vitae dapibus. Proin vitae ligula sed sapien imperdiet auctor a in enim. Sed massa lacus,</p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" height="300px" src="img\lau.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" height="300px" src="images\products\tomato.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">লাউ</a>
+                <a href="vegetable.php">Tomato</a>
               </h4>
-              <p class="card-text">আমাদের সবজির মধ্যে লাউ অন্যতম। বর্তমানে বাজারে লাউয়ের দাম বেশ একটু চড়া। লাউয়ের উৎপাদন বাড়াতে পারলে কৃষক লাভবান হবে পাশাপাশি ক্রেতারাও কম দাম লাউ কিনতে পারবে। লাউ গাছে প্রচুর ফুল ধরে, কিন্তু লাউ ধরে খুব কম।</p>
+              <p class="card-text">orem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet molestie felis vitae dapibus. Proin vitae ligula sed sapien imperdiet auctor a in enim.
+			  Sed massa lacus,</p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" height="300px" src="img\chicken.png"  alt=""></a>
+            <a href="#"><img class="card-img-top" height="300px" src="images\products\chicken.jpg"  alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">দেশি মুরগি</a>
+                <a href="meat.php">Chiken</a>
               </h4>
-              <p class="card-text">দেশী মুরগি উৎপাদনে উন্নত কৌশল. বাংলাদেশের গ্রাম এলাকায় প্রায় প্রতিটি পরিবার দেশী মুরগি পালন করে থাকে। এদের উৎপাদন ক্ষমতা বিদেশী মুরগির চেয়ে কম। উৎপাদন ব্যয়ও অতি নগণ্য। 
-			  এটি অধিক রোগ প্রতিরোধ ক্ষমতা সম্পন্ন। এদের মাংস ও ডিমের মূল্য বিদেশী মুরগীর তুলনায় দ্বিগুণ, এর চাহিদাও খুবই বেশী। </p>
+              <p class="card-text">Suspendisse vitae mauris elit. Quisque arcu lectus, feugiat ac condimentum nec, tincidunt quis turpis. Curabitur sollicitudin commodo consectetur. 
+			  In mattis libero erat, eget </p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" height="300px" src="img\saag.jpg"  alt=""></a>
+            <a href="#"><img class="card-img-top" height="300px" src="images\products\rice1.jpg"  alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">কলমি শাক</a>
+                <a href="#">Balam Rice</a>
               </h4>
-              <p class="card-text"> দামে খুব সস্তা অথচ পুষ্টিগুণে অনন্য এমন খাবারের নামের তালিকায় উঠে আসবে কলমি শাকের নাম। কলমি শাক মূলত ভাজি অথবা ঝোল রান্না ভাতের সঙ্গে খাওয়া হয়। 
-			  এছাড়া এই শাক দিয়ে পাকোড়া, বড়া ইত্যাদি তৈরী করে খাওয়া যায়।</p>
+              <p class="card-text"> Suspendisse vitae mauris elit. Quisque arcu lectus, feugiat ac condimentum nec, tincidunt quis turpis. Curabitur sollicitudin commodo consectetur.
+			  In mattis libero erat, eget</p>
             </div>
           </div>
         </div>
@@ -240,23 +286,24 @@ if(!isset($_SESSION['username']))
       <!-- Features Section -->
       <div class="row">
         <div class="col-lg-6">
-          <h2>এমন কি রেসিপি </h2>
-          <p>নিচের কিছু রেসিপি পাবেন আমাদের ওয়েবসাইটে:</p>
+          <h2>And Even Recipes...</h2>
+          <p>Mauris ut nibh auctor:</p>
           <ul>
             <li>
-              <strong>ট্যাংরা মাছের রেসিপি</strong>
+              <strong>consectetur</strong>
             </li>
-            <li>লাউ এর রেসিপি</li>
-            <li>চিংড়ি রেসিপি</li>
-            <li>কালা ভুনা রেসিপি</li>
-            <li>রোস্ট রেসিপি</li>
+            <li>Ornare</li>
+            <li>Laoreet</li>
+            <li>Molestie</li>
+            <li>Pharetra</li>
           </ul>
-          <p>ট্যাংরা মাছের নাম শুনলে যেকোনো ভোজনরসিকের জিভে জল এসে যায়। সুস্বাদু মাছটি রান্না করা যায় নানা উপায়ে।
-		  পেঁয়াজ-কুচি, কাঁচা মরিচ দিয়ে ট্যাংরা মাছ চচ্চড়ির জুড়ি নেই। ট্যাংরা মাছের ঝোলের স্বাদ অনন্য। দেশের দক্ষিণাঞ্চলের নদ-নদীতে পাওয়া যায় নোনা ট্যাংরা। 
-		  তবে মিঠা পানির দেশি ট্যাংরা হলে স্বাদ আরও বেশি। </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet molestie felis vitae dapibus. Proin vitae ligula sed sapien imperdiet auctor a in enim. Sed massa lacus, condimentum id est non, dapibus sollicitudin justo. Donec porta odio nulla, id
+		  dapibus mauris porta in. Maecenas nec dolor nec dui aliquet ornare. Ut imperdiet nec arcu ultrices porttitor. 
+		  Vivamus luctus massa non nunc viverra consequat. Mauris ut nibh auctor, fringilla odio sit amet, 
+		  hendrerit eros. Fusce urna ligula, interdum at dui et, pharetra rhoncus nibh. </p>
         </div>
         <div class="col-lg-6">
-          <img class="img-fluid rounded" src="img\tengra.jpg" alt="">
+          <img class="img-fluid rounded" src="images\biriyani.jpg" alt="">
         </div>
       </div>
       <!-- /.row -->
@@ -266,11 +313,11 @@ if(!isset($_SESSION['username']))
       <!-- Call to Action Section -->
       <div class="row mb-4">
         <div class="col-md-8">
-          <p>সপ্তাহের ব্যবধানে মাংস, সবজি এবং চালের দাম কিছুটা বেড়েছে। গত সপ্তাহের চেয়ে ২০ থেকে ৩০ টাকা বেড়েছে মুরগির মাংসের দাম। অন্যদিকে ৫ থেকে ১৫ টাকা দর বেড়েছে বিভিন্ন সবজির।
-		  আজ পেঁয়াজের দাম বাড়ার আশঙ্কা</p>
+          <p>Suspendisse vitae mauris elit. Quisque arcu lectus, feugiat ac condimentum nec, tincidunt quis turpis. Curabitur 
+		  sollicitudin commodo consectetur. In mattis</p>
         </div>
         <div class="col-md-4">
-          <a class="btn btn-lg btn-secondary btn-block" href="#">বাজারে যান</a>
+          <a class="btn btn-lg btn-secondary btn-block" href="products.php">Go Shopping!</a>
         </div>
       </div>
 
@@ -280,12 +327,13 @@ if(!isset($_SESSION['username']))
     <div class="row" style="margin-top:10px;">
       <div class="small-12">
 
-        <footer style="margin-top:10px;">
-           <p style="text-align:center; font-size:0.8em;">&copy; BOLT Sports Shop. All Rights Reserved.</p>
-        </footer>
+        
 
       </div>
     </div>
+    <footer style="margin-top:10px;">
+        <p style="text-align:center; font-size:0.8em;">&copy; Farm To Desk. All Rights Reserved.</p>
+    </footer>
 
 
 	
