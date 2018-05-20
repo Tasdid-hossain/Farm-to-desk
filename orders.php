@@ -127,31 +127,42 @@ include 'config.php';
 
     <div class="row" >
       <div class="large-12">
-        <h3>My Farm To Desk Orders</h3>
+        <h3 style="margin-top:100px;text-align:center;">My Farm To Desk Orders</h3>
         <hr>
-
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" style="margin-top:20px;width:40%;margin-left:30%;">
+		<table id="myTable" class="table table-active">
+			<tr class="header">
+				<th style="width:60%;">ID</th>
+				<th style="width:60%;">Name</th>
+				<th style="width:60%;">Units</th>
+				<th style="width:40%;">Price</th>
+				<th style="width:60%;">Total</th>
+				<th style="width:60%;">Product Code</th>
+				<th style="width:60%;">Date</th>
+			</tr>
+  
         <?php
           $user = $_SESSION["username"];
           $result = $mysqli->query("SELECT * from orders where email='".$user."'");
           if($result) {
             while($obj = $result->fetch_object()) {
               //echo '<div class="large-6">';
-              echo '<p><h4>Order ID ->'.$obj->id.'</h4></p>';
-              echo '<p><strong>Date of Purchase</strong>: '.$obj->date.'</p>';
-              echo '<p><strong>Product Code</strong>: '.$obj->product_code.'</p>';
-              echo '<p><strong>Product Name</strong>: '.$obj->product_name.'</p>';
-              echo '<p><strong>Price Per Unit</strong>: '.$obj->price.'</p>';
-              echo '<p><strong>Units Bought</strong>: '.$obj->units.'</p>';
-              echo '<p><strong>Total Cost</strong>: '.$currency.$obj->total.'</p>';
-              //echo '</div>';
-              //echo '<div class="large-6">';
+			  echo '<tr>';
+              echo '<td>'.$obj->product_name.'</td>';
+			  echo '<td>'.$obj->id.'</td>';
+			  echo '<td>'.$obj->units.'</td>';
+			  echo '<td>'.$obj->price.'</td>';
+			  echo '<td>'.$currency.$obj->total.'</td>';
+			  echo '<td>'.$obj->product_code.'</td>';
+			  echo '<td>'.$obj->date.'</td>';
               //echo '<img src="images/products/sports_band.jpg">';
               //echo '</div>';
-              echo '<p><hr></p>';
+			  echo'</tr>';
 
             }
           }
         ?>
+		</table>
       </div>
     </div>
 
@@ -170,7 +181,25 @@ include 'config.php';
            <p style="text-align:center; font-size:0.8em;">&copy; Farm To Desk. All Rights Reserved.</p>
     </footer>
 
-
+	<script>
+		function myFunction() {
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("myInput");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("myTable");
+		  tr = table.getElementsByTagName("tr");
+		  for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+			  if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			  } else {
+				tr[i].style.display = "none";
+			  }
+			}       
+		  }
+		}
+		</script>
 
 	
 	 <script src="vendor/jquery/jquery.min.js"></script>
