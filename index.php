@@ -54,7 +54,7 @@ if(!isset($_SESSION['username']))
 			    <a class="nav-link" href="orders.php">My Orders</a>
             </li>
 			<li class="nav-item">
-              <a class="nav-link" href="cart.php">View Cart</a>
+              <a class="nav-link" href="cart.php">View and Cart</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact Us</a>
