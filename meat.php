@@ -42,6 +42,8 @@ include 'config.php';
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                 <a class="dropdown-item" href="fish.php">Fish Markert</a>
                 <a class="dropdown-item" href="rice.php">Rice Markert</a>
+				<a class="dropdown-item" href="vegetable.php">Vegetable Markert</a>
+				<a class="dropdown-item" href="meat.php">Meat Markert</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -49,8 +51,8 @@ include 'config.php';
 				Recipe
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Vegetable recipe</a>
-                <a class="dropdown-item" href="blog-post.html">Pie recipe</a>
+                <a class="dropdown-item" href="v_recipe.php">Vegetable recipe</a>
+                <a class="dropdown-item" href="p_recipe.php">Pie recipe</a>
               </div>
             </li>
 			    <a class="nav-link" href="orders.php">My Orders</a>
@@ -65,7 +67,7 @@ include 'config.php';
 			echo "<li class='nav-item dropdown'>";
 			echo  "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownBlog' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
 			if(isset($_SESSION['username'])){
-				if($_SESSION['username'] == "admin@farmtodesk.com"){
+				if($_SESSION['username'] == "sjobs@apple.com"){
 				echo "Admin";}
 				else 
 					echo "My Account";
@@ -80,7 +82,7 @@ include 'config.php';
 			<?php
 			echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownBlog'>";
 			if(isset($_SESSION['username'])){
-				if($_SESSION['username'] == "admin@farmtodesk.com"){
+				if($_SESSION['username'] == "sjobs@apple.com"){
 					echo "<a class ='dropdown-item' href='account.php'>";
 					echo "Update Quantity";
 					echo "</a>";
