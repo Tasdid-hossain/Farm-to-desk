@@ -20,3 +20,5 @@ rvm:
 
 =======
 >>>>>>> a5ba03be4ee0aa666aad61a1cc843a422550d1f7
+
+bundle install --jobs=3 --retry=3
