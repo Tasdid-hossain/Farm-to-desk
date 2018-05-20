@@ -123,7 +123,7 @@ include 'config.php';
         </div>
       </div>
     </nav>
-  
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" style="margin-top:100px;width:40%;margin-left:30%;">
 
     <div class="row" >
       <div class="large-12">
@@ -134,10 +134,10 @@ include 'config.php';
           if(isset($_SESSION['cart'])) {
 
             $total = 0;
-            echo '<table>';
+            echo '<table id="myTable">';
             echo '<tr>';
-            echo '<th>Code</th>';
             echo '<th>Name</th>';
+            echo '<th>Code</th>';
             echo '<th>Quantity</th>';
             echo '<th>Cost</th>';
             echo '</tr>';
@@ -153,8 +153,8 @@ include 'config.php';
                 $total = $total + $cost; //add to the total cost
 
                 echo '<tr>';
-                echo '<td>'.$obj->product_code.'</td>';
                 echo '<td>'.$obj->product_name.'</td>';
+				echo '<td>'.$obj->product_code.'</td>';
                 echo '<td>'.$quantity.'&nbsp;<a class="button [secondary success alert]" style="padding:5px;" href="update-cart.php?action=add&id='.$product_id.'">+</a>&nbsp;<a class="button alert" style="padding:5px;" href="update-cart.php?action=remove&id='.$product_id.'">-</a></td>';
                 echo '<td>'.$cost.'</td>';
                 echo '</tr>';
@@ -205,7 +205,25 @@ include 'config.php';
           <footer style="margin-top:10px;">
               <p style="text-align:center; font-size:0.8em;">&copy; Farm To Desk. All Rights Reserved.</p>
           </footer>
-
+		<script>
+		function myFunction() {
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("myInput");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("myTable");
+		  tr = table.getElementsByTagName("tr");
+		  for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+			  if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			  } else {
+				tr[i].style.display = "none";
+			  }
+			}       
+		  }
+		}
+		</script>
 
 	<script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
