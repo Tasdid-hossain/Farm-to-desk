@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 before_script:
   - "travis_retry bin/rake neo4j:install[$NEO4J_VERSION] --trace"
   - "bin/rake neo4j:config[development,7474] --trace"
@@ -61,3 +62,16 @@ matrix:
     # Enterprise
     - rvm: 2
       env: NEO4J_URL="http://localhost:7474" NEO4J_VERSION=enterprise-3.3.1
+=======
+sudo:          false
+language:      node_js
+node_js:
+  - "node"
+install:       npm install
+script:
+  - npm test
+  - gulp
+cache:
+  directories:
+    - node_modules
+>>>>>>> a0ef2d3770b39b94276427186a08ce76178baafc
