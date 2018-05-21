@@ -17,6 +17,8 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
 	
   </head>
   <body>
