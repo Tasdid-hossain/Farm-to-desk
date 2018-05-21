@@ -7,7 +7,6 @@ include 'config.php';
 if(isset($_SESSION['cart'])) {
 
   $total = 0;
-
   foreach($_SESSION['cart'] as $product_id => $quantity) {
 
     $result = $mysqli->query("SELECT * FROM products WHERE id = ".$product_id);
@@ -20,8 +19,8 @@ if(isset($_SESSION['cart'])) {
         $cost = $obj->price * $quantity;
 
         $user = $_SESSION["username"];
-
-        $query = $mysqli->query("INSERT INTO orders (product_code, product_name, product_desc, price, units, total, email, product_img_name) VALUES('$obj->product_code', '$obj->product_name', '$obj->product_desc', $obj->price, $quantity, $cost, '$user', '$obj->product_img_name')");
+		$shipping = $_SESSION["shipping"];
+        $query = $mysqli->query("INSERT INTO orders (product_code, product_name, product_desc, price, units, total, email, product_img_name, shipping) VALUES('$obj->product_code', '$obj->product_name', '$obj->product_desc', $obj->price, $quantity, $cost, '$user', '$obj->product_img_name', '$shipping')");
 
         if($query){
           $newqty = $obj->qty - $quantity;
