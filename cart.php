@@ -169,9 +169,23 @@ include 'config.php';
           echo '<td colspan="3" align="right">Total</td>';
           echo '<td>'.$total.'</td>';
           echo '</tr>';
-
+           
+          echo '<tr>';
+          echo '<td><form action=""><H4> Shipping Method </H4><input type="radio" name="shipping" value="Normal" checked = "checked"> 3 Working Days (Free) <br><input type="radio" name="shipping" value="Express"> 1 Working Day Express Shipping (500 BDT)<br></form></td>';
+          echo '</tr>';
+          echo '</br>';
+              
+              
           echo '<tr>';
           echo '<td colspan="4" align="right"><a href="update-cart.php?action=empty" class="button alert">Empty Cart</a>&nbsp;<a href="products.php" class="button [secondary success alert]">Continue Shopping</a>';
+           
+          echo '<form action="">
+          <p><b>Promo Code (if applicable)</b></p>
+          <input type="promo" name="promoid">
+          <p><font size="1.5">Enter your 5 Digit Code to reedem your discount</font></p>
+          <br></form>';
+        
+              
           if(isset($_SESSION['username'])) {
             echo '<a href="orders-update.php"><button style="float:right;">COD</button></a>';
           }
