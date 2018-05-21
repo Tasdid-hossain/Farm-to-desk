@@ -7,6 +7,7 @@ include 'config.php';
 
 $product_id = $_GET['id'];
 $action = $_GET['action'];
+$shippingMethod = $_GET["shipping"];
 
 
 if($action === 'empty')
@@ -31,13 +32,16 @@ if($result){
       if($_SESSION['cart'][$product_id] == 0)
         unset($_SESSION['cart'][$product_id]);
         break;
+	case "shipping": {
+		$_SESSION['shipping'] = strtolower($shippingMethod);
+		break;
+	}
 
 
 
     }
   }
 }
-
 
 
 header("location:cart.php");
