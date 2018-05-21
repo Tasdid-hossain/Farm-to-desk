@@ -171,7 +171,9 @@ include 'config.php';
           echo '</tr>';
            
           echo '<tr>';
-          echo '<td><form action=""><H4> Shipping Method </H4><input type="radio" name="shipping" value="Normal" checked = "checked"> 3 Working Days (Free) <br><input type="radio" name="shipping" value="Express"> 1 Working Day Express Shipping (500 BDT)<br></form></td>';
+		  $shipping = isset($_SESSION["shipping"]) ? strtolower($_SESSION["shipping"]): "Normal";
+		  echo $shipping;
+          echo '<td><form method="GET" action="update-cart.php"><H4> Shipping Method </H4><input type="radio" name="shipping" value="Normal" '.($shipping == "Normal" ? "checked='checked'":"").'> 3 Working Days (Free) <br><input type="radio" name="shipping" value="Express" '.($shipping == "Express" ? "checked='checked'":"").'> 1 Working Day Express Shipping (500 BDT)<br><input type="submit" value="Update Shipping"><input type="hidden" name="action" value="shipping"><input type="hidden" name="id" value="'.$product_id.'"></form></td>';
           echo '</tr>';
           echo '</br>';
               
