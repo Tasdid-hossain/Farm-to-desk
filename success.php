@@ -17,6 +17,8 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
 	
   </head>
   <body>
@@ -39,6 +41,8 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                 <a class="dropdown-item" href="fish.php">Fish Markert</a>
                 <a class="dropdown-item" href="rice.php">Rice Markert</a>
+				<a class="dropdown-item" href="vegetable.php">Vegetable Markert</a>
+				<a class="dropdown-item" href="meat.php">Meat Markert</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -46,8 +50,8 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
 				Recipe
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Vegetable recipe</a>
-                <a class="dropdown-item" href="blog-post.html">Pie recipe</a>
+                <a class="dropdown-item" href="v_recipe.php">Vegetable recipe</a>
+                <a class="dropdown-item" href="p_recipe.php">Pie recipe</a>
               </div>
             </li>
 			    <a class="nav-link" href="orders.php">My Orders</a>
@@ -116,17 +120,18 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
       </div>
     </nav>
 
-    <div class="row" style="margin-top:300px; margin-left:800px">
+    <div class="row" style="margin-top:300px; margin-left:700px">
       <div class="small-12">
         <p>Thank you for shopping with farm to desk Bangladesh!</p>
         <p>Hope to see you again...</p>
 
 
-        <footer style="margin-top:10px;">
-           <p style="text-align:center; font-size:0.8em;">&copy; Farm To Desk. All Rights Reserved.</p>
-        </footer>
+        
 
       </div>
+        <footer style="margin-top:10px; ">
+           <p style="text-align:center; font-size:0.8em;">&copy; Farm To Desk. All Rights Reserved.</p>
+        </footer>
     </div>
 
 
