@@ -29,103 +29,9 @@ include 'config.php';
   </head>
   <body>
 
-  <!-- NAVIGATION -->
-  
-   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.php">Farm To Desk Bangaladesh</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-			<li class="nav-item">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Markert
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="fish.php">Fish Markert</a>
-                <a class="dropdown-item" href="rice.php">Rice Markert</a>
-				<a class="dropdown-item" href="vegetable.php">Vegetable Markert</a>
-				<a class="dropdown-item" href="meat.php">Meat Markert</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Recipe
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="v_recipe.php">Vegetable recipe</a>
-                <a class="dropdown-item" href="p_recipe.php">Pie recipe</a>
-              </div>
-            </li>
-			    <a class="nav-link" href="orders.php">My Orders</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link" href="cart.php">View Cart</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.php">Contact Us</a>
-            </li>
-			<?php
-			echo "<li class='nav-item dropdown'>";
-			echo  "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownBlog' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
-			if(isset($_SESSION['username'])){
-				if($_SESSION['username'] == "admin@farmtodesk.com"){
-				echo "Admin";}
-				else 
-					echo "My Account";
-				
-			}
-			else{
-				
-				echo "Login";
-			}
-			echo "</a>";
-			?>
-			<?php
-			echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownBlog'>";
-			if(isset($_SESSION['username'])){
-				if($_SESSION['username'] == "admin@farmtodesk.com"){
-					echo "<a class ='dropdown-item' href='account.php'>";
-					echo "Update Quantity";
-					echo "</a>";
-					echo "<a class ='dropdown-item' href='upload.php'>";
-					echo "Upload Product";
-					echo "</a>";
-					echo "<a class ='dropdown-item' href='logout.php'>";
-					echo "Logout";
-					echo "</a>";
-				}
-				else{
-					echo "<a class ='dropdown-item' href='account.php'>";
-					echo "Edit Profile";
-					echo "</a>";
-					echo "<a class ='dropdown-item' href='logout.php'>";
-					echo "Logout";
-					echo "</a>";
-				}
-			}
-			else{
-				echo "<a class ='dropdown-item' href='login.php'>";
-				echo "Sign In";
-				echo "</a>";
-				echo "<a class ='dropdown-item' href='register.php'>";
-				echo "Sign Up";
-				echo "</a>";
-			}
-			
-			echo "</div>";
-			?>
-			
-            </li>
-			
-			</ul>
-        </div>
-      </div>
-    </nav>
-     
+	<?php
+		include ('menu.php');
+	?>
 
     <div class="row" style="margin-top:10px;">
       <div class="large-12">
@@ -163,9 +69,9 @@ include 'config.php';
       <div class="small-12">
         <center><p><input style="clear:both;" type="submit" class="button" value="Update"></p></center>
         </form>
-        <footer style="margin-top:10px;">
-           <p style="text-align:center; font-size:0.8em;">&copy; Farm To Desk. All Rights Reserved.</p>
-    </footer>
+	<?php
+		include ('footer.php');
+	?>
 
       </div>
     </div>
