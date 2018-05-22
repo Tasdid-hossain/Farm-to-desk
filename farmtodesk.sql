@@ -63,17 +63,23 @@ CREATE TABLE `orders` (
   `total` int(15) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email` varchar(255) NOT NULL,
-  `product_img_name` varchar(255) NOT NULL
+  `product_img_name` varchar(255) NOT NULL,
+  `shipping` varchar(255) NOT NULL
+    
+    
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
---
 
-INSERT INTO `orders` (`id`, `product_code`, `product_name`, `product_desc`, `price`, `units`, `total`, `date`, `email`, `product_img_name`) VALUES
-(24, 'OSC', 'Bottle gourd', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 19, 4, 76, '2018-05-21 07:23:57', 'tasdid@hossain.com', 'lau.jpg'),
-(23, 'OOS', 'Beans', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 23, 4, 92, '2018-05-21 07:23:57', 'tasdid@hossain.com', 'motorshuti.jpg'),
-(22, 'STU', 'Lamb', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 650, 11, 7150, '2018-05-21 07:21:52', 'tasdid@hossain.com', 'lamb.jpg');
+--INSERT INTO `orders` (`id`, `product_code`, `product_name`, `product_desc`, `price`, `units`, `total`, `date`, `email`, `product_img_name`, `shipping`) VALUES
+(25, 'GBL', 'Katari Vog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 48, 3, 144, '2018-05-22 13:59:16', 'tasdid@hossain.com', 'rice1.jpg', 'express'),
+(26, 'CAG', 'Carrot', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 23, 1, 23, '2018-05-22 14:03:52', 'tasdid@hossain.com', 'carrot.jpg', 'express'),
+(27, 'millstone', 'millstone', 'The Sports Band collection features highly polished stainless steel and space black stainless steel cases. The display is protected by sapphire crystal. And there is a choice of three different leather bands.', 1000, 1, 1000, '2018-05-22 14:03:52', 'tasdid@hossain.com', 'fish3ilish.jpg', 'express'),
+(28, 'GBL', 'Katari Vog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 48, 1, 48, '2018-05-22 14:04:20', 'tasdid@hossain.com', 'rice1.jpg', 'express');
+
+
+
 
 -- --------------------------------------------------------
 

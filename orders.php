@@ -47,6 +47,7 @@ include 'config.php';
 				<th style="width:60%;">Product Code</th>
 				<th style="width:60%;">Date</th>
                 <th style="width:60%;">Shipping</th>
+                <th style="width:60%;">Status</th>
 			</tr>
   
         <?php
@@ -64,6 +65,7 @@ include 'config.php';
 			  echo '<td>'.$currency.$obj->total.'</td>';
 			  echo '<td>'.$obj->product_code.'</td>';
 			  echo '<td>'.$obj->date.'</td>';
+              echo '<td>'.$obj->shipping.'</td>';
 			  if($state==1){
 				  echo '<td>Delivered</td>';
 			  }
