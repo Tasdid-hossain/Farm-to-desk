@@ -50,14 +50,16 @@ echo '</li>';
 echo '<a class="nav-link" href="orders.php">';
 if(isset($_SESSION['username'])){
 				if($_SESSION['username'] == "admin@farmtodesk.com"){
+				echo '<a class="nav-link" href="shipping.php">';
 				echo "Shipments";}
 
-				else 
+				else{
+					echo '<a class="nav-link" href="orders.php">';
 					echo "My Orders";
-				
+				}
 			}
 			else{
-				
+				echo '<a class="nav-link" href="orders.php">';
 				echo "My Orders";
 			}
 echo '</a>';
