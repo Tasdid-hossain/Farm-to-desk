@@ -39,8 +39,8 @@ include 'config.php';
 		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" style="margin-top:20px;width:40%;margin-left:30%;">
 		<table id="myTable" class="table table-active">
 			<tr class="header">
-				<th style="width:60%;">ID</th>
 				<th style="width:60%;">Name</th>
+				<th style="width:60%;">ID</th>
 				<th style="width:60%;">Units</th>
 				<th style="width:40%;">Price</th>
 				<th style="width:60%;">Total</th>
