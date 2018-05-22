@@ -107,7 +107,16 @@ if(!isset($_SESSION['username']))
 					echo "Logout";
 					echo "</a>";
 				}
-			else{
+				else{
+					echo "<a class ='dropdown-item' href='account.php'>";
+					echo "Edit Profile";
+					echo "</a>";
+					echo "<a class ='dropdown-item' href='logout.php'>";
+					echo "Logout";
+					echo "</a>";
+				}
+		}
+		else{
 				echo "<a class ='dropdown-item' href='login.php'>";
 				echo "Sign In";
 				echo "</a>";
@@ -115,7 +124,6 @@ if(!isset($_SESSION['username']))
 				echo "Sign Up";
 				echo "</a>";
 			}
-		}
 			
 			echo "</div>";
 			?>
