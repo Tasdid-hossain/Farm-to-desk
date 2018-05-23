@@ -57,24 +57,38 @@ if(!isset($_SESSION['username']))
 		<?php
 			if(isset($_POST['upload'])){
 				
-				$db = mysqli_connect("localhost","root","","bolt");
+				$db = mysqli_connect("localhost","root","","farmtodesk");
 
+				
+				$Name = $_POST["Name"];
+				$Code = $_POST["Code"];
+				$Desc = $_POST["Desc"];
+				$qty = $_POST["qty"];
+				$Price = $_POST["Price"];
+				$Category = $_POST["Category"];
 				$image = $_FILES['image']['name'];
-				$uploadName = $_POST["uploadName"];
-				$uploadPrice = $_POST["uploadPrice"];
-				$uploadDesc = $_POST["uploadDesc"];
 				
-				$target = "images/".basename($image);
+				$target = "images/products/".basename($image);
 				
-				$sql = "INSERT INTO images(uploadName,uploadPrice,uploadImage) VALUES ('$uploadName','$uploadPrice','$image')";
+				$sql = "INSERT INTO products(product_code,product_name,product_desc, product_img_name, qty, price, category) VALUES ('$Code','$Name','$Desc','$image','$qty','$Price','$Category')";
 				mysqli_query($db, $sql);
-				if (move_uploaded_file($image, $target)) {
+				move_uploaded_file($_FILES['image']['tmp_name'], $target);
+				if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
 					$msg = "Image uploaded successfully";
 				}else{
 					$msg = "Failed to upload image";
 				}
 			}
 		?>
+		<script language="javascript" type="text/javascript">
+			function getPath() {
+			var Form = document.forms['forming'];
+			var inputName = Form.elements['file1'].value;
+
+			var imgPath = inputName;
+			Form.elements['file_src'].value = imgPath;
+			}
+		</script>
         <!-- Left Sidebar  -->
         <div class="left-sidebar">
             <!-- Sidebar scroll-->
@@ -118,17 +132,41 @@ if(!isset($_SESSION['username']))
                     <!-- column -->
                     <h3>&nbsp; Product Upload</h3>
                     <div class="col-lg-12">
-                        <form method="POST" action="upload.php" enctype="multipart/form-data">
+                        <form method="POST" action="upload.php" name ="forming" enctype="multipart/form-data" >
                           <div class="form-group row">
                             <label for="Food_Name" class="col-sm-3 col-form-label">Food Name</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="Food_name" name ="uploadName" placeholder="Item Name">
+                              <input type="text" class="form-control" id="Food_name" name ="Name" placeholder="Item Name">
+                            </div>
+                          </div>
+						  <div class="form-group row">
+                            <label for="Food_Desc" class="col-sm-3 col-form-label">Food Code</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="Food_Desc" name ="Code" placeholder="Item Name">
+                            </div>
+                          </div>
+						  <div class="form-group row">
+                            <label for="Food_Name" class="col-sm-3 col-form-label">Food Desc</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="Food_name" name ="Desc" placeholder="Item Name">
+                            </div>
+                          </div>
+						  <div class="form-group row">
+                            <label for="Food_Name" class="col-sm-3 col-form-label">Food Quantity</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="Food_name" name ="qty" placeholder="Item Name">
                             </div>
                           </div>
                           <div class="form-group row">
                             <label for="Price" class="col-sm-2 col-form-label">Price</label>
                             <div class="col-sm-2">
-                              <input type="text" class="form-control" id="Food_name" name ="uploadPrice" placeholder="BDT">
+                              <input type="text" class="form-control" id="Food_name" name ="Price" placeholder="BDT">
+                            </div>
+                          </div>
+						   <div class="form-group row">
+                            <label for="Price" class="col-sm-2 col-form-label">Category</label>
+                            <div class="col-sm-2">
+                              <input type="text" class="form-control" id="Food_name" name ="Category" placeholder="BDT">
                             </div>
                           </div>
                             <div class="form-group row">
@@ -142,20 +180,10 @@ if(!isset($_SESSION['username']))
                               </div>
                             </div>
                           </div>
-                          <div class="form-group row">
-                            <div class="col-sm-2">Description</div>
-                            <div class="col-sm-10">
-                              <div class="form-check">
-                                <input class="form-check-input" type="textarea" name ="uploadDesc">
-                                <label class="form-check-label" for="gridCheck1">
-                                  Description
-                                </label>
-                              </div>
-                            </div>
-                          </div>
+                          
                           <div class="form-group row">
                             <div class="col-sm-10" >
-                              <button type="submit" class="btn btn-primary" name="upload">Upload</button>
+                              <button type="submit" onSubmit="getPath();" class="btn btn-primary" name="upload">Upload</button>
                             </div>
                           </div>
                         </form>
