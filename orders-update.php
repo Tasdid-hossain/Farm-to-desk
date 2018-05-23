@@ -20,7 +20,7 @@ if(isset($_SESSION['cart'])) {
 
         $user = $_SESSION["username"];
 		$shipping = $_SESSION["shipping"];
-        $query = $mysqli->query("INSERT INTO orders (product_code, product_name, product_desc, price, units, total, email, product_img_name, shipping) VALUES('$obj->product_code', '$obj->product_name', '$obj->product_desc', $obj->price, $quantity, $cost, '$user', '$obj->product_img_name', '$shipping')");
+        $query = $mysqli->query("INSERT INTO orders (product_code, product_name, product_desc, price, units, total, email, product_img_name, status) VALUES('$obj->product_code', '$obj->product_name', '$obj->product_desc', $obj->price, $quantity, $cost, '$user', '$obj->product_img_name', '$shipping')");
 
         if($query){
           $newqty = $obj->qty - $quantity;
