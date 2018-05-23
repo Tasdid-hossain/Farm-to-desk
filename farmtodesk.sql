@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2018 at 09:06 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.10
+-- Generation Time: May 23, 2018 at 10:01 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,31 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `images`
---
-
-CREATE TABLE `images` (
-  `id` int(11) NOT NULL,
-  `uploadName` varchar(255) NOT NULL,
-  `uploadPrice` varchar(255) NOT NULL,
-  `uploadImage` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `images`
---
-
-INSERT INTO `images` (`id`, `uploadName`, `uploadPrice`, `uploadImage`) VALUES
-(14, '123', '123', 'bolt-landscape.jpg'),
-(15, 'fishy', '12', 'aaa.jpg'),
-(16, 'gg', '11', 'sports_shoes.jpg'),
-(17, 'dog', '11', 'download.jpg'),
-(18, 'GG', '12', 'download.jpg'),
-(19, 'cat', '11', 'download.jpg');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `orders`
 --
 
@@ -64,16 +39,16 @@ CREATE TABLE `orders` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email` varchar(255) NOT NULL,
   `product_img_name` varchar(255) NOT NULL,
-  `shipping` varchar(255) NOT NULL
+  `status` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `product_code`, `product_name`, `product_desc`, `price`, `units`, `total`, `date`, `email`, `product_img_name`, `shipping`) VALUES
-(41, 'ABL', 'Badshavog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill.', 47, 1, 47, '2018-05-22 19:05:29', 'tasdid@hossain.com', 'rice2badshavog.jpg', ''),
-(38, 'OSC', 'Bottle gourd', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 19, 2, 38, '2018-05-22 18:55:32', 'tasdid@hossain.com', 'lau.jpg', 'normal');
+INSERT INTO `orders` (`id`, `product_code`, `product_name`, `product_desc`, `price`, `units`, `total`, `date`, `email`, `product_img_name`, `status`) VALUES
+(22, 'ABL', 'Badshavog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill.', 47, 3, 141, '2018-05-20 18:34:43', 'tasdid@hossain.com', 'rice2badshavog.jpg', 0),
+(23, 'millstone', 'millstone', 'The Sports Band collection features highly polished stainless steel and space black stainless steel cases. The display is protected by sapphire crystal. And there is a choice of three different leather bands.', 1000, 3, 3000, '2018-05-20 19:02:50', 'tasdid@hossain.com', 'fish3ilish.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -97,47 +72,28 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_code`, `product_name`, `product_desc`, `product_img_name`, `qty`, `price`, `Category`) VALUES
-(1, 'fish1', 'Bengal Carp', 'With a clean vamp, tonal stitch details throughout, and a unique formstripe finish, the all new sports shoes fits the needs of multiple running consumers by offering an athletic and a lifestyle look.', 'fish1.jpg', 28, '5000.00', 'fish'),
-(2, 'Ilish', 'Ilish', 'A sleek, tonal stitched cap for runners. The plain texture and unique design will help runners to concentrate more on running and less on their hair. The combbination of casual and formal look is just brilliant.', 'fish2katla.jpg', 10, '200.00', 'fish'),
-(3, 'millstone', 'millstone', 'The Sports Band collection features highly polished stainless steel and space black stainless steel cases. The display is protected by sapphire crystal. And there is a choice of three different leather bands.', 'fish3ilish.jpg', 32, '1000.00', 'fish'),
-(4, 'GBL', 'Katari Vog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'rice1.jpg', 0, '48.00', 'rice'),
+(1, 'fish1', 'Bengal Carp', 'With a clean vamp, tonal stitch details throughout, and a unique formstripe finish, the all new sports shoes fits the needs of multiple running consumers by offering an athletic and a lifestyle look.', 'fish1.jpg', 29, '5000.00', 'fish'),
+(2, 'Ilish', 'Ilish', 'A sleek, tonal stitched cap for runners. The plain texture and unique design will help runners to concentrate more on running and less on their hair. The combbination of casual and formal look is just brilliant.', 'fish2katla.jpg', 12, '200.00', 'fish'),
+(3, 'millstone', 'millstone', 'The Sports Band collection features highly polished stainless steel and space black stainless steel cases. The display is protected by sapphire crystal. And there is a choice of three different leather bands.', 'fish3ilish.jpg', 30, '1000.00', 'fish'),
+(4, 'GBL', 'Katari Vog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'rice1.jpg', 4, '48.00', 'rice'),
 (5, 'BBL', 'Najirshal', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'rice1najirshal.jpg', 0, '52.00', 'rice'),
-(6, 'ABL', 'Badshavog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill.', 'rice2badshavog.jpg', 9, '47.00', 'rice'),
+(6, 'ABL', 'Badshavog', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill.', 'rice2badshavog.jpg', 11, '47.00', 'rice'),
 (7, 'OBL', 'Balam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill.', 'rice4balam.jpg', 20, '57.00', 'rice'),
 (8, 'QBL', 'Balam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'rice4balam.jpg', 21, '42.00', 'rice'),
 (9, 'aaX', 'miniket', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'rice5miniket.jpg', 10, '47.00', 'rice'),
 (10, 'OOP', 'Boro', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'rice6boro.jpg', 40, '49.00', 'rice'),
 (11, 'AAG', 'Chinigura', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'rice7chinigura.jpeg', 12, '60.00', 'rice'),
-(12, 'AAA', 'Brinjal ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'bagun.jpg', 47, '48.00', 'vegetable'),
-(13, 'CAG', 'Carrot', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'carrot.jpg', 11, '23.00', 'vegetable'),
-(14, 'OSC', 'Bottle gourd', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'lau.jpg', 14, '19.00', 'vegetable'),
-(15, 'OOS', 'Beans', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'motorshuti.jpg', 21, '23.00', 'vegetable'),
+(12, 'AAA', 'Brinjal ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'bagun.jpg', 50, '48.00', 'vegetable'),
+(13, 'CAG', 'Carrot', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'carrot.jpg', 14, '23.00', 'vegetable'),
+(14, 'OSC', 'Bottle gourd', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'lau.jpg', 20, '19.00', 'vegetable'),
+(15, 'OOS', 'Beans', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'motorshuti.jpg', 25, '23.00', 'vegetable'),
 (16, 'APS', 'Raddish', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'raddish.jpg', 21, '30.00', 'vegetable'),
 (17, 'OSX', 'Tomato', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'tomato.jpg', 66, '26.00', 'vegetable'),
-(18, 'SRA', 'Beef', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'beef.jpg', 35, '500.00', 'meat'),
-(19, 'STU', 'Lamb', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'lamb.jpg', 59, '650.00', 'meat'),
+(18, 'SRA', 'Beef', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'beef.jpg', 36, '500.00', 'meat'),
+(19, 'STU', 'Lamb', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'lamb.jpg', 70, '650.00', 'meat'),
 (20, 'ISO', 'Chicken', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'chicken.jpg', 80, '150.00', 'meat'),
 (21, 'ISW', 'Steak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'steak.jpg', 40, '800.00', 'meat'),
 (22, 'SAE', 'Goat ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue ultrices lorem, non suscipit risus ullamcorper ut. Morbi luctus eros leo, vitae feugiat urna fringill', 'goat.jpg', 50, '640.00', 'meat');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `promo`
---
-
-CREATE TABLE `promo` (
-  `p_id` int(11) NOT NULL,
-  `promocode` varchar(5) NOT NULL,
-  `promo_value` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `promo`
---
-
-INSERT INTO `promo` (`p_id`, `promocode`, `promo_value`) VALUES
-(1, 'QWERT', 20);
 
 -- --------------------------------------------------------
 
@@ -171,12 +127,6 @@ INSERT INTO `users` (`id`, `fname`, `lname`, `address`, `city`, `pin`, `email`, 
 --
 
 --
--- Indexes for table `images`
---
-ALTER TABLE `images`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -190,12 +140,6 @@ ALTER TABLE `products`
   ADD UNIQUE KEY `product_code` (`product_code`);
 
 --
--- Indexes for table `promo`
---
-ALTER TABLE `promo`
-  ADD PRIMARY KEY (`p_id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -207,16 +151,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `images`
---
-ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `products`
