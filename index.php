@@ -69,6 +69,8 @@ if(!isset($_SESSION['username']))
 			if(isset($_SESSION['username'])){
 				if($_SESSION['username'] == "admin@farmtodesk.com"){
 				echo "Admin";}
+				else if($_SESSION['username'] == "mainadmin@farmtodesk.com"){
+				echo "Administrator";}
 				else 
 					echo "My Account";
 				
@@ -93,15 +95,18 @@ if(!isset($_SESSION['username']))
 					echo "Logout";
 					echo "</a>";
 				}
-				else{
-					echo "<a class ='dropdown-item' href='account.php'>";
-					echo "Edit Profile";
+			else if($_SESSION['username'] == "mainadmin@farmtodesk.com")
+				{
+					echo "<a class ='dropdown-item' href='manageuser.php'>";
+					echo "Manage User";
+					echo "</a>";
+					echo "<a class ='dropdown-item' href='manageproduct.php'>";
+					echo "Manage Product";
 					echo "</a>";
 					echo "<a class ='dropdown-item' href='logout.php'>";
 					echo "Logout";
 					echo "</a>";
 				}
-			}
 			else{
 				echo "<a class ='dropdown-item' href='login.php'>";
 				echo "Sign In";
@@ -110,6 +115,7 @@ if(!isset($_SESSION['username']))
 				echo "Sign Up";
 				echo "</a>";
 			}
+		}
 			
 			echo "</div>";
 			?>
