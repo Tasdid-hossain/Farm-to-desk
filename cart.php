@@ -86,7 +86,7 @@ include 'config.php';
                     $sql = "SELECT promo_value FROM promo WHERE promocode ='$promoid'";
                     $result = mysqli_query($db,$sql);
                     $row = mysqli_fetch_assoc($result);
-                    echo $row["promo_value"];
+                  
 
 
 
