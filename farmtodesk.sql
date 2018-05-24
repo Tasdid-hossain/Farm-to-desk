@@ -39,6 +39,7 @@ CREATE TABLE `orders` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email` varchar(255) NOT NULL,
   `product_img_name` varchar(255) NOT NULL,
+  `shipping` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -122,7 +123,20 @@ INSERT INTO `users` (`id`, `fname`, `lname`, `address`, `city`, `pin`, `email`, 
 (3, 'aasd', 'asd', 'asd', 'asd', 1233, 'aa@aa.com', '123', 'user'),
 (4, 'Tasdid', 'Hossain', '234', 'Dhaka', 12544, 'tasdid@hossain.com', '123', 'user');
 
---
+
+
+
+CREATE TABLE `promo` (
+`p_id` int(11) NOT NULL,
+`promocode` varchar(5) NOT NULL,
+`promo_value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ 
+ALTER TABLE `promo`
+ADD PRIMARY KEY (`p_id`);
+
+
+INSERT INTO `promo` (`p_id`, `promocode`, `promo_value`) VALUES(1, 'QWERT', 20);
 -- Indexes for dumped tables
 --
 
