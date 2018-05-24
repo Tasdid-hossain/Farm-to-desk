@@ -39,7 +39,6 @@ CREATE TABLE `orders` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email` varchar(255) NOT NULL,
   `product_img_name` varchar(255) NOT NULL,
-  `shipping` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
