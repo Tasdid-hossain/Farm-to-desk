@@ -10,5 +10,5 @@ $id = $_GET['id']; // $id is now defined
 		$mysqli->query("UPDATE orders set status = 1 WHERE id='".$id."'");
 			
 		mysqli_close($mysqli);
-		header("Location: shipping.php");
+		header("Location: sendOrder.php");
 ?>
