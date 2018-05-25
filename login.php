@@ -46,7 +46,7 @@ if(isset($_SESSION["username"])){
               <label for="right-label" class="right inline">Email</label>
             </div>
             <div class="small-8 columns">
-              <input type="email" id="right-label" placeholder="nayantronix@gmail.com" name="username">
+              <input type="email" id="right-label" placeholder="yourmail@mail.com" name="username">
             </div>
           </div>
           <div class="row">
