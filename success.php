@@ -44,6 +44,9 @@ if(session_id() == '' || !isset($_SESSION)){session_start();}
 
 
 
+	 <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>
